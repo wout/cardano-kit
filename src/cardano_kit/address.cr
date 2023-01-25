@@ -37,4 +37,8 @@ struct CardanoKit::Address
   def self.from_bytes(prefix : AddrPrefix | String, bytes : Bytes)
     new(prefix, Bech32.to_words(bytes))
   end
+
+  def self.from_hexstring(prefix : AddrPrefix | String, hexstring : String)
+    from_bytes(prefix, hexstring.hexbytes)
+  end
 end

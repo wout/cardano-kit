@@ -34,8 +34,24 @@ describe CardanoKit::Address do
     end
   end
 
+  describe ".from_hexstring" do
+    it "parses an address from a hexstring" do
+      address = CardanoKit::Address.from_hexstring(
+        CardanoKit::AddrPrefix::Testnet,
+        testnet_addr_bytes_with_stake.hexstring
+      )
+
+      CardanoKit::Address.from_hexstring(
+        "addr_testtt",
+        testnet_addr_bytes_with_stake.hexstring
+      )
+
+      address.words.should eq(testnet_addr_words_with_stake)
+    end
+  end
+
   describe "#to_bech32" do
-    it "converts an address obect to bech 32" do
+    it "converts an address object to bech 32" do
       CardanoKit::Address.from_bech32(testnet_bech32_addr_with_stake).to_bech32
         .should eq(testnet_bech32_addr_with_stake)
     end
