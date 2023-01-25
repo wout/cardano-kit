@@ -116,7 +116,7 @@ if cip08.signature_valid?
   puts cip08.message
   # => "Hello Crystal!"
 
-  # get the raw address bytes
+  # get the address object
   puts cip08.address.class
   # => CardanoKit::Addresss
 else
@@ -128,7 +128,7 @@ Alternatively, the CIP08 object can be initialized with the signed data object
 provided by the client:
 
 ```crystal
-json_from_client = "{\"key\":\"...\",\"signature\":\"...\"}"
+json_from_client = %({"key":"...","signature":"..."})
 signed_data = CardanoKit::CIP08::SignedData.from_json(json_from_client)
 cip08 = CardanoKit::CIP08.new(signed_data)
 ```
