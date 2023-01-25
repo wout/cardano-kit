@@ -16,12 +16,8 @@ struct CardanoKit::CIP08
     @signature = Signature.from_cbor(data.signature.hexbytes)
   end
 
-  def address_bech32(prefix : AddrPrefix)
-    Address.from_bytes(prefix, address_bytes).to_bech32
-  end
-
-  def address_bech32(prefix : Int32)
-    address_bech32(AddrPrefix.from_value(prefix))
+  def address(prefix : AddrPrefix) : Address
+    Address.from_bytes(prefix, address_bytes)
   end
 
   def address_bytes : Bytes

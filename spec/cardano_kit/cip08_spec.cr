@@ -38,11 +38,12 @@ describe CardanoKit::CIP08 do
     end
   end
 
-  describe "#address_bech32" do
-    it "returns the address in bech32-encoded format" do
-      CardanoKit::CIP08.new(valid_key, valid_signature)
-        .address_bech32(CardanoKit::AddrPrefix::Testnet)
-        .should eq(testnet_bech32_addr_with_stake)
+  describe "#address" do
+    it "returns an address object" do
+      address = CardanoKit::CIP08.new(valid_key, valid_signature)
+        .address(CardanoKit::AddrPrefix::Testnet)
+
+      address.to_bech32.should eq(testnet_bech32_addr_with_stake)
     end
   end
 end
