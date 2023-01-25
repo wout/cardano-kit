@@ -34,25 +34,50 @@ describe CardanoKit::Address do
     end
   end
 
-  describe ".from_words" do
-    it "parses an address from bytes" do
-      from_words = CardanoKit::Address.from_words(
-        CardanoKit::AddrPrefix::Testnet,
-        testnet_addr_words_with_stake
-      )
-      from_initializer = CardanoKit::Address.new(
-        CardanoKit::AddrPrefix::Testnet,
-        testnet_addr_words_with_stake
-      )
-
-      from_words.should eq(from_initializer)
-    end
-  end
-
   describe "#to_bech32" do
     it "converts an address obect to bech 32" do
       CardanoKit::Address.from_bech32(testnet_bech32_addr_with_stake).to_bech32
         .should eq(testnet_bech32_addr_with_stake)
+    end
+  end
+
+  describe "#stake_address" do
+    it "finds a stake address for mainnet" do
+      address = CardanoKit::Address.from_bech32(
+        "addr1qxdvcswn0exwc2vjfr6u6f6qndfhmk94xjrt5tztpelyk4yg83zn9d4vrrtzs98lcl5u5q6mv7ngmg829xxvy3g5ydls7c76wu"
+      )
+
+      address.stake_address
+        .should eq("stake1uxyrc3fjk6kp343gznlu06w2qddk0f5d5r4znrxzg52zxlclk0hlq")
+    end
+
+    it "finds a stake address for testnet" do
+      address = CardanoKit::Address.from_bech32(
+        "addr_test1qqe63xlwltvt0dehyzqdn82eugy79egwzr35pwuu3wrzeqglaeslj4r7yyt83ktudh92uxs4qu08x8klfx4psnz8ka7qcpfveq"
+      )
+
+      address.stake_address
+        .should eq("stake_test1uq07uc0e23lzz9ncm97xmj4wrg2sw8nnrm05n2scf3rmwlqmds4k5")
+    end
+
+    it "can't find a stake address given a base address" do
+      address = CardanoKit::Address.from_bech32(
+        "addr_test1vqzdl92zkvjpy95ggya0ddwke22c28x68t06s26dmf7e5vg60x4lu"
+      )
+
+      expect_raises(CardanoKit::NoStakeAddressException, "No stake address found") do
+        address.stake_address
+      end
+    end
+  end
+
+  describe "#stake_address?" do
+    it "can't find a stake address given a base address" do
+      address = CardanoKit::Address.from_bech32(
+        "addr_test1vqzdl92zkvjpy95ggya0ddwke22c28x68t06s26dmf7e5vg60x4lu"
+      )
+
+      address.stake_address?.should be_nil
     end
   end
 end

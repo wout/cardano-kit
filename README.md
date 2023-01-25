@@ -1,6 +1,6 @@
 # cardano-kit
 
-TODO: Write a description here
+At toolkit for Crystal to ease development for the Cardano blockchain.
 
 ## Installation
 
