@@ -42,7 +42,7 @@ describe CardanoKit::Address do
       )
 
       CardanoKit::Address.from_hexstring(
-        "addr_testtt",
+        "addr_test",
         testnet_addr_bytes_with_stake.hexstring
       )
 
