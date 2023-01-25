@@ -1,5 +1,6 @@
 require "bech32"
 require "cbor"
 require "ed25519"
+require "json"
 require "./cardano_kit/exceptions"
 require "./cardano_kit/**"

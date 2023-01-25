@@ -1,6 +1,17 @@
 require "../spec_helper"
 
 describe CardanoKit::CIP08 do
+  describe ".initialize" do
+    it "can be called with a signed data object" do
+      signed_data = CardanoKit::CIP08::SignedData.from_json({
+        key:       valid_key,
+        signature: valid_signature,
+      }.to_json)
+
+      CardanoKit::CIP08.new(signed_data).message.should eq("Hello Crystal!")
+    end
+  end
+
   describe "#signature_valid?" do
     it "tests positive with a valid key" do
       CardanoKit::CIP08.new(valid_key, valid_signature).signature_valid?

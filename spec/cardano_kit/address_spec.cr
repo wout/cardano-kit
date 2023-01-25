@@ -2,7 +2,7 @@ require "../spec_helper"
 
 describe CardanoKit::Address do
   describe ".initialize" do
-    it "can be called with an string prefix" do
+    it "can be called with a string prefix" do
       CardanoKit::Address.new("addr_test", testnet_addr_words_with_stake).prefix
         .should eq(CardanoKit::AddrPrefix::Testnet)
     end
