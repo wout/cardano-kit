@@ -126,7 +126,8 @@ end
 ```
 
 Alternatively, the CIP08 object can be initialized with the signed data object
-provided by the client:
+provided by the client. This will relieve you from having to parse the user data
+and it adds an extra layer of type safety:
 
 ```crystal
 json_from_client = %({"key":"...","signature":"..."})
