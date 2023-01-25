@@ -65,8 +65,9 @@ puts address.stake_address
 ```
 
 If a short address is provided without the stake address part, this method will
-raise a `CardanoKit::NoStakeAddressException`. The the `stake_address?` variant
-of this method will return `nil` in that case.
+raise a `CardanoKit::NoStakeAddressException`. The `stake_address?` variant of
+this method will return `nil` in that case, which may be preferable in some
+scenarios.
 
 Finally, an address object can be initialized directly with its prefix and words
 arguments:
