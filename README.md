@@ -8,6 +8,10 @@ complex implementations, thereby lowering the barriers to entry for development
 on Cardano. It's very much a work in progress, but the contained modules are 
 ready for use in production.
 
+![GitHub](https://img.shields.io/github/license/wout/cardano-kit)
+![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/wout/cardano-kit)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/wout/cardano-kit/ci.yml?branch=main)
+
 ## Installation
 
 1. Add the dependency to your `shard.yml`:
