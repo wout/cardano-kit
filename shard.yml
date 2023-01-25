@@ -1,0 +1,23 @@
+name: cardano_kit
+version: 0.1.0
+
+authors:
+  - Wout <hi@wout.codes>
+
+crystal: ">= 1.5.0"
+
+license: MIT
+
+dependencies:
+  cbor:
+    github: albertorestifo/crystal-cbor
+  ed25519:
+    github: spider-gazelle/ed25519
+  bech32:
+    github: wout/bech32
+development_dependencies:
+  ameba:
+    github: crystal-ameba/ameba
+  spec_mirror:
+    github: wout/spec_mirror.cr
+    branch: master
