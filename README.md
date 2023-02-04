@@ -118,7 +118,9 @@ if cip08.signature_valid?
   # => "Hello Crystal!"
 
   # get the address object
-  puts cip08.address.class
+  network_id = 1 # mainnet, testnet is 0
+  prefix = CardanoKit::AddrPrefix.from_value(network_id)
+  puts cip08.address(prefix).class
   # => CardanoKit::Addresss
 else
   puts "Invalid signature!"
