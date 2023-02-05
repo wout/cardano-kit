@@ -45,6 +45,13 @@ describe CardanoKit::CIP08 do
 
       address.to_bech32.should eq(testnet_bech32_addr_with_stake)
     end
+
+    it "returns an address object using a string prefix" do
+      address = CardanoKit::CIP08.new(valid_key, valid_signature)
+        .address("addr_test")
+
+      address.to_bech32.should eq(testnet_bech32_addr_with_stake)
+    end
   end
 end
 

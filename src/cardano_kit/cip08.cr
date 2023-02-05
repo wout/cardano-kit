@@ -16,7 +16,7 @@ struct CardanoKit::CIP08
     @signature = Signature.from_cbor(data.signature.hexbytes)
   end
 
-  def address(prefix : AddrPrefix) : Address
+  def address(prefix : AddrPrefix | String) : Address
     Address.from_bytes(prefix, address_bytes)
   end
 
