@@ -117,11 +117,12 @@ if cip08.signature_valid?
   puts cip08.message
   # => "Hello Crystal!"
 
+  # define the address prefix based on the used network (1 is mainnet, 0 for testnets)
+  prefix = CardanoKit::AddrPrefix.from_value(1)
+
   # get the address object
-  network_id = 1 # mainnet, testnet is 0
-  prefix = CardanoKit::AddrPrefix.from_value(network_id)
-  puts cip08.address(prefix).class
-  # => CardanoKit::Addresss
+  puts cip08.address(prefix).to_s
+  # => "addr1qqe63xlwltvt0dehyzqdn82eugy79egwzr35pwuu3wrzeqglaeslj4r7yyt83kt..."
 else
   puts "Invalid signature!"
 end
