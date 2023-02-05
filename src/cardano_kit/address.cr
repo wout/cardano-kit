@@ -11,6 +11,10 @@ struct CardanoKit::Address
     @prefix = AddrPrefix.from_s(prefix)
   end
 
+  def to_s
+    to_bech32
+  end
+
   def to_bech32 : String
     Bech32.encode(prefix.to_s, words, limit: LIMIT)
   end

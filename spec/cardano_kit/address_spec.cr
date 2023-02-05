@@ -57,6 +57,13 @@ describe CardanoKit::Address do
     end
   end
 
+  describe "#to_s" do
+    it "a convenience methods to convert an address object to bech 32" do
+      CardanoKit::Address.from_bech32(testnet_bech32_addr_with_stake).to_s
+        .should eq(testnet_bech32_addr_with_stake)
+    end
+  end
+
   describe "#stake_address" do
     it "finds a stake address for mainnet" do
       address = CardanoKit::Address.from_bech32(
